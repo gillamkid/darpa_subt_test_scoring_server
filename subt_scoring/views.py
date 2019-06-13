@@ -7,10 +7,10 @@ from rest_framework.authentication import SessionAuthentication
 from django.contrib.auth.models import User
 from django.utils import timezone
 
-from authentications import BearerAuthentication
-from parsers import CBORParser
-import models as dcm
-import serializers as dcs
+from .authentications import BearerAuthentication
+from .parsers import CBORParser
+from . import models as dcm
+from . import serializers as dcs
 
 class UserViewSet(viewsets.ModelViewSet):
     """

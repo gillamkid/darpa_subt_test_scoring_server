@@ -1,7 +1,7 @@
 from rest_framework import serializers
 from django.contrib.auth.models import User
 
-import models as dcm
+from . import models as dcm
 
 class TokenSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:

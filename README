@@ -1,5 +1,5 @@
 System requirements
-    python2 is installed
+    python is installed
     # to install required python packages
     sudo pip install -r requirements.txt
 
