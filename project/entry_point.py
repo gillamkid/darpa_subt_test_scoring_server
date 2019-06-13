@@ -14,4 +14,4 @@ if __name__ == "__main__":
     management.call_command('makemigrations', 'subt_scoring', interactive=False)
     management.call_command('migrate', interactive=False)
     management.call_command('init_data', interactive=False)
-    subprocess.call(["gunicorn", "subt_scoring.wsgi", "--bind", ":8000", "--workers", "5"])
+    subprocess.call(["gunicorn", "subt_scoring.wsgi", "--bind", ":8008", "--workers", "5"])

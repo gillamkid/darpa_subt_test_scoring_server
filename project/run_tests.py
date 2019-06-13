@@ -1,5 +1,7 @@
 import requests
 
+URL_ROOT = 'http://localhost:8008' 
+
 json_headers = {
     "Authorization" : "Bearer subttesttoken123",
     "Content-Type" : "application/json",
@@ -26,7 +28,7 @@ invalid_artifact_report_data = {"test": "value"}
 
 
 def test_token_access():
-    url = "http://localhost:8000/api/status/"
+    url = URL_ROOT + "/api/status/"
     
     # No token
     response = requests.get(url, headers=no_token_headers)
@@ -38,7 +40,7 @@ def test_token_access():
 
 
 def test_get_status():
-    url = "http://localhost:8000/api/status/"
+    url = URL_ROOT + "/api/status/"
 
     # Correct GET /api/status/ request
     response = requests.get(url, headers=json_headers)
@@ -46,7 +48,7 @@ def test_get_status():
 
 
 def test_post_artifact_report_valid():
-    url = "http://localhost:8000/api/artifact_reports/"
+    url = URL_ROOT + "/api/artifact_reports/"
 
     # Correct POST /api/artifact_reports/ request
     response = requests.post(url, json=valid_artifact_report_data, headers=json_headers)
@@ -54,7 +56,7 @@ def test_post_artifact_report_valid():
 
 
 def test_post_artifact_report_invalid():
-    url = "http://localhost:8000/api/artifact_reports/"
+    url = URL_ROOT + "/api/artifact_reports/"
 
     # Invalid POST /api/artifact_reports/ request data
     response = requests.post(url, json=invalid_artifact_report_data, headers=json_headers)

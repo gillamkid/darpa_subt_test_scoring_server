@@ -7,6 +7,8 @@ import cbor2
 
 import subt_scoring.models as dcm
 
+URL_ROOT = 'http://localhost:8008'
+
 class RequestTest(TestCase):
     client_class = RequestsClient
     
@@ -25,7 +27,7 @@ class RequestTest(TestCase):
         self.client_invalid_token.headers.update({"Authorization": "Bearer 1111aaaa2222oooo"})
 
     def test_token_access(self):
-        url = "http://localhost:8000/api/status/"
+        url = URL_ROOT + "/api/status/"
 
         client_no_token = RequestsClient()
         client_invalid_token = RequestsClient()
@@ -39,12 +41,12 @@ class RequestTest(TestCase):
 
 
     def test_get_status(self):
-        url = "http://localhost:8000/api/status/"
+        url = URL_ROOT + "/api/status/"
         response = self.client.get(url)
         self.assertEqual(response.status_code, 200)
 
     def test_post_artifact_report_valid(self):
-        url = "http://localhost:8000/api/artifact_reports/"
+        url = URL_ROOT + "/api/artifact_reports/"
         valid_data = {
             "x" : "14",
             "y" : "65",
@@ -55,56 +57,56 @@ class RequestTest(TestCase):
         self.assertEqual(response.status_code, 201)
 
     def test_post_artifact_report_invalid(self):
-        url = "http://localhost:8000/api/artifact_reports/"
+        url = URL_ROOT + "/api/artifact_reports/"
         invalid_data = {"test":"value"}
         response = self.client.post(url, data=json.dumps(invalid_data), headers={"Content-Type" : "application/json"})
         self.assertEqual(response.status_code, 422)
 
     def test_post_map_update_JSON_valid(self):
-        url = "http://localhost:8000/map/update/"
+        url = URL_ROOT + "/map/update/"
         map_data = {}
         self.fail()
 
     def test_post_map_update_JSON_invalid(self):
-        url = "http://localhost:8000/map/update/"
+        url = URL_ROOT + "/map/update/"
         invalid_map_data = {}
         response = self.client.post(url, data=json.dumps(invalid_map_data), headers={"Content-Type" : "application/json"})
         self.assertEqual(response.status_code, 422)
 
     def test_post_map_update_CBOR_valid(self):
-        url = "http://localhost:8000/map/update/"
+        url = URL_ROOT + "/map/update/"
         map_data = {}
         self.fail()
     
     def test_post_map_update_CBOR_invalid(self):
-        url = "http://localhost:8000/map/update/"
+        url = URL_ROOT + "/map/update/"
         invalid_map_data = {}
         response = self.client.post(url, data=cbor2.dumps(invalid_map_data), headers={"Content-Type" : "application/cbor"})
         self.assertEqual(response.status_code, 422)
 
     def test_post_state_update_JSON_valid(self):
-        url = "http://localhost:8000/state/update/"
+        url = URL_ROOT + "/state/update/"
         valid_state_data = {
             "poses": []
         }
         self.fail()
     
     def test_post_state_update_JSON_invalid(self):
-        url = "http://localhost:8000/state/update/"
+        url = URL_ROOT + "/state/update/"
         invalid_state_data = {
         }
         response = self.client.post(url, data=json.dumps(invalid_state_data), headers={"Content-Type" : "application/json"})
         self.assertEqual(response.status_code, 422)
 
     def test_post_state_update_CBOR_valid(self):
-        url = "http://localhost:8000/state/update/"
+        url = URL_ROOT + "/state/update/"
         valid_state_data = {
             "poses": []
         }
         self.fail()
 
     def test_post_state_update_CBOR_invalid(self):
-        url = "http://localhost:8000/state/update/"
+        url = URL_ROOT + "/state/update/"
         invalid_state_data = {
             "poses": [
                 {
