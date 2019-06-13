@@ -33,7 +33,7 @@ class StatusView(views.APIView):
     """
 
     #authentication_classes = [SessionAuthentication, BearerAuthentication,]
-    permission_classes = [IsAuthenticated,]
+    #permission_classes = [IsAuthenticated,]
 
     def get(self, request, format=None):
         to_return = {}
@@ -52,7 +52,7 @@ class ArtifactReportView(views.APIView):
     """
     
     #authentication_classes = [SessionAuthentication, BearerAuthentication,]
-    permission_classes = [IsAuthenticated,]
+    #permission_classes = [IsAuthenticated,]
 
     def post(self, request, format=None):
         if not isinstance(request.data, dict):
@@ -93,7 +93,7 @@ class MapUpdateView(views.APIView):
     """
 
     #authentication_classes = [SessionAuthentication, BearerAuthentication,]
-    permission_classes = [IsAuthenticated,]
+    #permission_classes = [IsAuthenticated,]
     parser_classes =  [JSONParser, CBORParser,]
 
     map_2D = "OccupancyGrid"
@@ -184,7 +184,7 @@ class StateUpdateView(views.APIView):
     """
 
     #authentication_classes = [SessionAuthentication, BearerAuthentication,]
-    permission_classes = [IsAuthenticated,]
+    #permission_classes = [IsAuthenticated,]
     parser_classes =  [JSONParser, CBORParser,]
 
     def post(self, request, format=None):
