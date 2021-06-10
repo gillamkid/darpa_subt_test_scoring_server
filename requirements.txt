@@ -1,4 +1,4 @@
-django==1.11
+django==2.2.24
 djangorestframework==3.7.7
 django-extensions
 django-redis
